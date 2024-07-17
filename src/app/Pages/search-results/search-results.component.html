@@ -1,0 +1,11 @@
+<div *ngIf="loading" class="loading-container">
+  <div class="loading-bar"></div>
+</div>
+<div *ngIf="!loading">
+  <div class="container">
+    <app-title-card
+      *ngFor="let title of titleList"
+      [title]="title"
+    ></app-title-card>
+  </div>
+</div>

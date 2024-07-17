@@ -1,1 +1,18 @@
-<p>title-details works!</p>
+<div *ngIf="loading" class="loading-container">
+  <div class="loading-bar"></div>
+</div>
+<div *ngIf="!loading && title">
+  <h1 *ngIf="title.title">{{ title!.title }}</h1>
+  <p *ngIf="title.type"><strong>Type:</strong> {{ title.type }}</p>
+  <p *ngIf="title.director"><strong>Director:</strong> {{ title!.director }}</p>
+  <p *ngIf="title.cast"><strong>Cast:</strong> {{ title!.cast }}</p>
+  <p *ngIf="title.duration"><strong>Duration:</strong> {{ title!.duration }}</p>
+  <p *ngIf="title.release_year">
+    <strong>Release Year:</strong> {{ title!.release_year }}
+  </p>
+  <p *ngIf="title.description">
+    <strong>Description:</strong> {{ title!.description }}
+  </p>
+  <p *ngIf="title.rating"><strong>Rated:</strong> {{ title!.rating }}</p>
+  <p *ngIf="title.listed_in"><strong>Tags:</strong> {{ title!.listed_in }}</p>
+</div>

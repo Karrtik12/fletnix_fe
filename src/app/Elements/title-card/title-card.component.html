@@ -1,9 +1,11 @@
-<div class="card">
-  <h2>{{ title.title }}</h2>
-  <p>{{ title.type }}</p>
+<div class="card" (click)="navigateToDetail()">
+  <h2 *ngIf="title.title">{{ title.title }}</h2>
+  <p *ngIf="title.type">{{ title.type }}</p>
   <p *ngIf="title.director">Director: {{ title.director }}</p>
   <p *ngIf="title.cast">Cast: {{ truncate(title.cast, 30) }}</p>
-  <p>Duration: {{ title.duration }}</p>
-  <p>Release Year: {{ title.release_year }}</p>
-  <p class="description">{{ truncate(title.description, 150) }}</p>
+  <p *ngIf="title.duration">Duration: {{ title.duration }}</p>
+  <p *ngIf="title.release_year">Release Year: {{ title.release_year }}</p>
+  <p *ngIf="title.description" class="description">
+    {{ truncate(title.description, 150) }}
+  </p>
 </div>

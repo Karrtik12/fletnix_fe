@@ -22,6 +22,10 @@
   color: rgb(185, 0, 25);
 }
 
+.navbar-brand:hover {
+  cursor: pointer;
+}
+
 .search-bar {
   width: 100%;
   max-width: 400px;

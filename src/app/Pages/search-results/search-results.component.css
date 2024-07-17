@@ -37,34 +37,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.pagination span {
-  margin: 0 10px;
-  color: white;
-}
-
-.pagination button {
-  margin: 0 10px;
-}
-
-.filter {
-  display: flex;
-  justify-content: flex-end;
-  margin: 10px 0 30px 0;
-}
-
-.filter label {
-  color: white;
-}
-
-.filter select {
-  margin-left: 10px;
-  padding: 5px;
-}

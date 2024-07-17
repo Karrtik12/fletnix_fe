@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit{
   loading: boolean=false;
 
   ngOnInit(): void {
-    debugger;
     this.getTitles();
   }
 

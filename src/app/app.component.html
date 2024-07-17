@@ -1,9 +1,14 @@
 <nav class="navbar">
   <div class="navbar-left">
-    <span class="navbar-brand">FletNix</span>
+    <span (click)="navigateToHome()" class="navbar-brand">FletNix</span>
   </div>
   <div class="navbar-center">
-    <input type="text" class="search-bar" placeholder="Search..." />
+    <input
+      type="text"
+      class="search-bar"
+      placeholder="Search..."
+      (keyup)="onSearch($event)"
+    />
   </div>
   <div class="navbar-center"></div>
 </nav>
