@@ -1,0 +1,38 @@
+<div *ngIf="loading">
+  <div class="loading-bar"></div>
+</div>
+<div *ngIf="!loading">
+  <div class="filter">
+    <label for="typeFilter">Filter by Type:</label>
+    <select id="typeFilter" [(ngModel)]="query.type" (change)="applyFilter()">
+      <option value="">All</option>
+      <option value="movie">Movie</option>
+      <option value="tv show">TV Show</option>
+    </select>
+  </div>
+  <div class="container">
+    <app-title-card
+      *ngFor="let title of titleList"
+      [title]="title"
+    ></app-title-card>
+  </div>
+</div>
+<div class="pagination" *ngIf="totalPages > 1 && !loading">
+  <button [disabled]="currentPage === 1" (click)="goToPage(1)">First</button>
+  <button [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
+    Previous
+  </button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button
+    [disabled]="currentPage === totalPages"
+    (click)="goToPage(currentPage + 1)"
+  >
+    Next
+  </button>
+  <button
+    [disabled]="currentPage === totalPages"
+    (click)="goToPage(totalPages)"
+  >
+    Last
+  </button>
+</div>
