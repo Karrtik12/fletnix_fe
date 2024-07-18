@@ -13,7 +13,7 @@ import {MatIconModule} from '@angular/material/icon';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'fletnix_fe';
+  title = 'FletNix';
   authService = inject(AuthService);
 
   constructor(private router: Router) {}
