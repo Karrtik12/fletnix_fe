@@ -1,27 +1,14 @@
-# FletnixFe
+# FletNix Front-End
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0.
+To run this application in your local machine, follow these steps:
 
-## Development server
+- Clone this repo
+- Open the location in terminal
+- Run `npm install`
+- In `src/app/Services/auth.service.ts` and `src/app/Services/auth.service.ts`, set the value of `baseUrl` to `your-backend-server-url/api/auth` and `your-backend-server-url/api/titles`
+- Then in terminal run `npm start`
+- All set!!
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Note:
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Your local machine should have Node.js and npm installed
