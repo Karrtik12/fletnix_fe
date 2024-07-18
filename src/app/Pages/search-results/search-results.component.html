@@ -1,22 +1,26 @@
 <app-loading-bar *ngIf="loading" />
 <div *ngIf="!loading">
-  <div class="filter">
-    <label id="typeFilter">Filter by Type:</label>
-    <mat-radio-group
-      aria-labelledby="typeFilter"
-      [(ngModel)]="searchQuery.type"
-      (change)="search()"
-    >
-      <mat-radio-button value=""><span>All</span></mat-radio-button>
-      <mat-radio-button value="movie"><span>Movie</span></mat-radio-button>
-      <mat-radio-button value="tv show"><span>TV Show</span></mat-radio-button>
-    </mat-radio-group>
-  </div>
-  <div *ngIf="titleList.length !== 0" class="container">
-    <app-title-card
-      *ngFor="let title of titleList"
-      [title]="title"
-    ></app-title-card>
+  <div *ngIf="titleList.length !== 0">
+    <div class="filter">
+      <label id="typeFilter">Filter by Type:</label>
+      <mat-radio-group
+        aria-labelledby="typeFilter"
+        [(ngModel)]="searchQuery.type"
+        (change)="search()"
+      >
+        <mat-radio-button value=""><span>All</span></mat-radio-button>
+        <mat-radio-button value="movie"><span>Movie</span></mat-radio-button>
+        <mat-radio-button value="tv show"
+          ><span>TV Show</span></mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+    <div class="container">
+      <app-title-card
+        *ngFor="let title of titleList"
+        [title]="title"
+      ></app-title-card>
+    </div>
   </div>
   <h1 class="no-result-message" *ngIf="titleList.length === 0">
     We didn't find any matches for "{{ searchQuery.q }}".

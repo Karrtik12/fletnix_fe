@@ -50,6 +50,7 @@ mat-radio-button span {
 
 .no-result-message {
   color: white;
+  margin: 80px 0 0 0;
 }
 
 .page-number {
