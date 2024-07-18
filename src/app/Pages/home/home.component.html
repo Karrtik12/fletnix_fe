@@ -1,36 +1,52 @@
 <app-loading-bar *ngIf="loading" />
 <div *ngIf="!loading">
-  <div class="filter">
-    <label for="typeFilter">Filter by Type:</label>
-    <select id="typeFilter" [(ngModel)]="query.type" (change)="applyFilter()">
-      <option value="">All</option>
-      <option value="movie">Movie</option>
-      <option value="tv show">TV Show</option>
-    </select>
+  <div *ngIf="titleList.length !== 0">
+    <div class="filter">
+      <label id="typeFilter">Filter by Type:</label>
+      <mat-radio-group
+        aria-labelledby="typeFilter"
+        [(ngModel)]="query.type"
+        (change)="applyFilter()"
+      >
+        <mat-radio-button value=""><span>All</span></mat-radio-button>
+        <mat-radio-button value="movie"><span>Movie</span></mat-radio-button>
+        <mat-radio-button value="tv show"
+          ><span>TV Show</span></mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+    <div class="container">
+      <app-title-card
+        *ngFor="let title of titleList"
+        [title]="title"
+      ></app-title-card>
+    </div>
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button [disabled]="currentPage === 1" (click)="goToPage(1)">
+        First
+      </button>
+      <button
+        [disabled]="currentPage === 1"
+        (click)="goToPage(currentPage - 1)"
+      >
+        Previous
+      </button>
+      <span class="page-number">Page {{ currentPage }} / {{ totalPages }}</span>
+      <button
+        [disabled]="currentPage === totalPages"
+        (click)="goToPage(currentPage + 1)"
+      >
+        Next
+      </button>
+      <button
+        [disabled]="currentPage === totalPages"
+        (click)="goToPage(totalPages)"
+      >
+        Last
+      </button>
+    </div>
   </div>
-  <div class="container">
-    <app-title-card
-      *ngFor="let title of titleList"
-      [title]="title"
-    ></app-title-card>
-  </div>
-</div>
-<div class="pagination" *ngIf="totalPages > 1 && !loading">
-  <button [disabled]="currentPage === 1" (click)="goToPage(1)">First</button>
-  <button [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
-    Previous
-  </button>
-  <span>Page {{ currentPage }} of {{ totalPages }}</span>
-  <button
-    [disabled]="currentPage === totalPages"
-    (click)="goToPage(currentPage + 1)"
-  >
-    Next
-  </button>
-  <button
-    [disabled]="currentPage === totalPages"
-    (click)="goToPage(totalPages)"
-  >
-    Last
-  </button>
+  <h1 class="no-result-message" *ngIf="titleList.length === 0">
+    Something went wrong, please try again later
+  </h1>
 </div>

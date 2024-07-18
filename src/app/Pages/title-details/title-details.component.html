@@ -1,16 +1,20 @@
 <app-loading-bar *ngIf="loading" />
-<div *ngIf="!loading && title">
+<div class="details" *ngIf="!loading && title">
+  <p class="tags" *ngIf="title.type">{{ title.type }}</p>
+  <div class="tag-div" *ngIf="title.listed_in">
+    <p class="tags" *ngFor="let item of title.listed_in.split(', ')">
+      {{ item }}
+    </p>
+  </div>
   <h1 *ngIf="title.title">{{ title!.title }}</h1>
-  <p *ngIf="title.type"><strong>Type:</strong> {{ title.type }}</p>
+  <p class="description" *ngIf="title.description">{{ title!.description }}</p>
   <p *ngIf="title.director"><strong>Director:</strong> {{ title!.director }}</p>
   <p *ngIf="title.cast"><strong>Cast:</strong> {{ title!.cast }}</p>
-  <p *ngIf="title.duration"><strong>Duration:</strong> {{ title!.duration }}</p>
+  <p *ngIf="title.duration">
+    <strong>Duration:</strong> {{ convertToHoursOrSeason(title!.duration) }}
+  </p>
   <p *ngIf="title.release_year">
     <strong>Release Year:</strong> {{ title!.release_year }}
   </p>
-  <p *ngIf="title.description">
-    <strong>Description:</strong> {{ title!.description }}
-  </p>
   <p *ngIf="title.rating"><strong>Rated:</strong> {{ title!.rating }}</p>
-  <p *ngIf="title.listed_in"><strong>Tags:</strong> {{ title!.listed_in }}</p>
 </div>

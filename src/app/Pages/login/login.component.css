@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 80vh;
 }
 
 .login-box {
@@ -19,10 +20,6 @@ h2 {
   margin-bottom: 20px;
 }
 
-form {
-  margin-right: 20px;
-}
-
 .form-group {
   margin-bottom: 15px;
   text-align: left;
@@ -35,7 +32,7 @@ label {
 }
 
 input {
-  width: 100%;
+  width: 94%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -50,10 +47,11 @@ input {
   color: #fff;
   font-size: 16px;
   cursor: pointer;
+  transition: background-image 0.1s;
 }
 
 .btn:hover {
-  background-color: rgb(167, 1, 23);
+  background-color: rgb(132, 0, 18);
 }
 
 .loading-spinner {

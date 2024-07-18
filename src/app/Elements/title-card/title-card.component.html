@@ -1,11 +1,26 @@
-<div class="card" (click)="navigateToDetail()">
-  <h2 *ngIf="title.title">{{ title.title }}</h2>
-  <p *ngIf="title.type">{{ title.type }}</p>
-  <p *ngIf="title.director">Director: {{ title.director }}</p>
-  <p *ngIf="title.cast">Cast: {{ truncate(title.cast, 30) }}</p>
-  <p *ngIf="title.duration">Duration: {{ title.duration }}</p>
-  <p *ngIf="title.release_year">Release Year: {{ title.release_year }}</p>
-  <p *ngIf="title.description" class="description">
-    {{ truncate(title.description, 150) }}
-  </p>
+<div class="card-wrapper">
+  <div
+    class="card"
+    (click)="navigateToDetail()"
+    (mouseover)="hover = true"
+    (mouseleave)="hover = false"
+  >
+    <p class="tags" *ngIf="title.type && hover">{{ title.type }}</p>
+    <div class="tag-div" *ngIf="title.listed_in && hover">
+      <p class="tags" *ngFor="let item of title.listed_in.split(', ')">
+        {{ item }}
+      </p>
+    </div>
+    <!-- <p class="tags" >{{ title.listed_in }}</p> -->
+    <h2 *ngIf="title.title">{{ title.title }}</h2>
+    <p *ngIf="title.director">Director: {{ truncate(title.director, 20) }}</p>
+    <p *ngIf="title.cast">Cast: {{ truncate(title.cast, 25) }}</p>
+    <p *ngIf="title.duration">
+      Duration: {{ convertToHoursOrSeason(title.duration) }}
+    </p>
+    <!-- <p *ngIf="title.release_year">Release Year: {{ title.release_year }}</p> -->
+    <!-- <p *ngIf="title.description && hover" class="description">
+      {{ truncate(title.description, 120) }}
+    </p> -->
+  </div>
 </div>

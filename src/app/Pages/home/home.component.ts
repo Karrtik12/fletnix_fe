@@ -6,12 +6,12 @@ import { TitleDetailModel, TitleListModel } from '../../Models/title';
 import { TitleCardComponent } from '../../Elements/title-card/title-card.component';
 import { QueryModel } from '../../Models/query';
 import { LoadingBarComponent } from '../../Elements/loading-bar/loading-bar.component';
-import { AuthService } from '../../Services/auth.service';
+import {MatRadioModule} from '@angular/material/radio';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgIf, NgFor, TitleCardComponent, FormsModule, LoadingBarComponent ],
+  imports: [NgIf, NgFor, TitleCardComponent, FormsModule, LoadingBarComponent,MatRadioModule ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

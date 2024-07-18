@@ -1,3 +1,30 @@
 * {
   color: white;
 }
+
+.details {
+  margin-top: 100px;
+}
+
+.tags {
+  display: flex;
+  background-color: gray;
+  border-radius: 2px;
+  width: max-content;
+  max-width: 100%;
+  padding: 2px 4px;
+  margin: 0 4px 0 0;
+}
+
+.tag-div {
+  display: flex;
+  margin-top: 15px;
+}
+
+h1 {
+  font-size: 45px;
+}
+
+.description {
+  font-size: 20px;
+}

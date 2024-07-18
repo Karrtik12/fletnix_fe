@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { TitleDetailModel, TitleListModel } from '../Models/title';
-import { QueryModel } from '../Models/query';
+import { QueryModel, SearchQueryModel } from '../Models/query';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
@@ -19,9 +19,12 @@ export class TitlesService {
     return this.http.get<TitleDetailModel>(`${this.baseUrl}/${id}`);
   }
 
-  searchTitles(query: string):Observable<TitleListModel>{
+  searchTitles(param: SearchQueryModel):Observable<TitleListModel>{
     let queryParams = new HttpParams();
-    queryParams = queryParams.set("q", query);
+    queryParams = queryParams.set("q", param.q);
+    if (param.type !== undefined) {
+      queryParams = queryParams.set("type", param.type.toString());
+    }
     queryParams = queryParams.set("age", this.authService.loggedInUser.age.toString());
     return this.http.get<TitleListModel>(`${this.baseUrl}/search`,{params:queryParams})
   }

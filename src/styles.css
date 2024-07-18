@@ -3,7 +3,12 @@
 html,
 body {
   height: 100%;
-  background-color: rgb(25, 25, 25);
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 0, 0),
+    rgb(27, 0, 74),
+    rgb(100, 0, 13)
+  );
 }
 body {
   margin: 0;
