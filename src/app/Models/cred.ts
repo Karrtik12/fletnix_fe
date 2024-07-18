@@ -5,8 +5,8 @@ export interface RegistrationDetails {
 }
 
 export interface RegistrationResponse {
-    created:boolean;
-    message:string;
+    created: boolean;
+    message: string;
 }
 
 export interface LoginDetails {
@@ -14,8 +14,8 @@ export interface LoginDetails {
     password: string;
 }
 
-export interface UserDetails{
-    email:string;
+export interface UserDetails {
+    email: string;
     age: number;
     message: string;
 }

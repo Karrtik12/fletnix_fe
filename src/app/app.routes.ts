@@ -7,22 +7,22 @@ import { RegisterComponent } from './Pages/register/register.component';
 
 export const routes: Routes = [
     {
-        path:'',
-        redirectTo:'home',
-        pathMatch:'full'
-    },{
-        path:'home',
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+    }, {
+        path: 'home',
         component: HomeComponent
-    },{
+    }, {
         path: 'title/:id',
         component: TitleDetailsComponent
-    },{
+    }, {
         path: 'search',
         component: SearchResultsComponent
-    },{
+    }, {
         path: 'login',
         component: LoginComponent
-    },{
+    }, {
         path: 'register',
         component: RegisterComponent
     }

@@ -1,12 +1,12 @@
 export interface TitleListModel {
-    page: number,
-    totalPages: number,
-    count: number,
-    titles: Array<TitleDetailModel>
+  page: number,
+  totalPages: number,
+  count: number,
+  titles: Array<TitleDetailModel>
 }
 
 export interface TitleDetailModel {
-    _id: string;
+  _id: string;
   show_id: string;
   type: string;
   title: string;

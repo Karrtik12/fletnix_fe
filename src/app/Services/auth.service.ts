@@ -13,14 +13,14 @@ export class AuthService {
 
   baseUrl: string = `https://fletnix-be.onrender.com/api/auth`;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
   }
 
-  registerApi(registrationDetails: RegistrationDetails){
-    return this.http.post<RegistrationResponse>(`${this.baseUrl}/register`,{email:registrationDetails.email, password:registrationDetails.password, age:registrationDetails.age})
+  registerApi(registrationDetails: RegistrationDetails) {
+    return this.http.post<RegistrationResponse>(`${this.baseUrl}/register`, { email: registrationDetails.email, password: registrationDetails.password, age: registrationDetails.age })
   }
 
-  loginApi(loginDetails: LoginDetails){
-    return this.http.post<UserDetails>(`${this.baseUrl}/login`,{email:loginDetails.email, password:loginDetails.password})
+  loginApi(loginDetails: LoginDetails) {
+    return this.http.post<UserDetails>(`${this.baseUrl}/login`, { email: loginDetails.email, password: loginDetails.password })
   }
 }

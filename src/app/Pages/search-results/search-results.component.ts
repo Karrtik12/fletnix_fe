@@ -6,7 +6,7 @@ import { TitleCardComponent } from '../../Elements/title-card/title-card.compone
 import { NgFor, NgIf } from '@angular/common';
 import { LoadingBarComponent } from "../../Elements/loading-bar/loading-bar.component";
 import { SearchQueryModel } from '../../Models/query';
-import {  MatRadioModule } from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -21,21 +21,22 @@ export class SearchResultsComponent {
     q: '',
     type: ""
   }
-  titleList: TitleDetailModel[]= [];
+  titleList: TitleDetailModel[] = [];
   loading: boolean = false;
   titlesService = inject(TitlesService);
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) { }
 
-  search(){
+  search() {
     this.loading = true;
     this.route.queryParams.subscribe(params => {
       this.searchQuery.q = params['q'];
       this.titlesService.searchTitles(this.searchQuery).subscribe(res => {
-        this.titleList = res.titles;      
+        this.titleList = res.titles;
       });
-      setTimeout(()=>{
-        this.loading= false;},1000);
+      setTimeout(() => {
+        this.loading = false;
+      }, 1000);
     });
 
   }

@@ -1,9 +1,9 @@
-export interface QueryModel{
-    page: number ;
-    type: string ;
+export interface QueryModel {
+    page: number;
+    type: string;
 }
 
-export interface SearchQueryModel{
+export interface SearchQueryModel {
     q: string;
-    type: string ;
+    type: string;
 }

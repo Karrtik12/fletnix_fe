@@ -15,29 +15,29 @@ export class TitlesService {
 
   constructor(private http: HttpClient) { }
 
-  getTitleById(id: string):Observable<TitleDetailModel>{
+  getTitleById(id: string): Observable<TitleDetailModel> {
     return this.http.get<TitleDetailModel>(`${this.baseUrl}/${id}`);
   }
 
-  searchTitles(param: SearchQueryModel):Observable<TitleListModel>{
+  searchTitles(param: SearchQueryModel): Observable<TitleListModel> {
     let queryParams = new HttpParams();
     queryParams = queryParams.set("q", param.q);
     if (param.type !== undefined) {
       queryParams = queryParams.set("type", param.type.toString());
     }
     queryParams = queryParams.set("age", this.authService.loggedInUser.age.toString());
-    return this.http.get<TitleListModel>(`${this.baseUrl}/search`,{params:queryParams})
+    return this.http.get<TitleListModel>(`${this.baseUrl}/search`, { params: queryParams })
   }
 
-  getAllTitles(params: QueryModel):Observable<TitleListModel>{
+  getAllTitles(params: QueryModel): Observable<TitleListModel> {
     let queryParams = new HttpParams();
-      queryParams = queryParams.set("age", this.authService.loggedInUser.age.toString());
+    queryParams = queryParams.set("age", this.authService.loggedInUser.age.toString());
     if (params.page !== undefined) {
       queryParams = queryParams.set("page", params.page.toString());
     }
     if (params.type !== undefined) {
       queryParams = queryParams.set("type", params.type.toString());
     }
-    return this.http.get<TitleListModel>(`${this.baseUrl}/`,{params:queryParams})
+    return this.http.get<TitleListModel>(`${this.baseUrl}/`, { params: queryParams })
   }
 }

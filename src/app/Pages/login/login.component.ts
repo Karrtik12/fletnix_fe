@@ -15,13 +15,13 @@ import { E } from '@angular/cdk/keycodes';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  loginDetails: LoginDetails = {email: '', password: ''}
-  loading :boolean = false;
+  loginDetails: LoginDetails = { email: '', password: '' }
+  loading: boolean = false;
   authService = inject(AuthService);
 
   constructor(
-    private router:Router,
-  ){}
+    private router: Router,
+  ) { }
 
   navigateToHome(): void {
     this.router.navigate(['/home']);
@@ -31,23 +31,25 @@ export class LoginComponent {
     this.router.navigate(['/register']);
   }
 
-  tryLogin(){
-    if(this.loginDetails.email !== '' && this.loginDetails.password !== ""){
+  tryLogin() {
+    if (this.loginDetails.email !== '' && this.loginDetails.password !== "") {
       this.loading = true;
       this.authService.loginApi(this.loginDetails!).subscribe(userDetails => {
         this.authService.loggedInUser = userDetails;
         localStorage.setItem("loggedInUserEmail", this.authService.loggedInUser.email);
         localStorage.setItem("loggedInUserAge", this.authService.loggedInUser.age.toString());
-        if(this.authService.loggedInUser!.email === '') {
+        if (this.authService.loggedInUser!.email === '') {
           alert(this.authService.loggedInUser.message)
         }
-        else{this.navigateToHome();
-          alert("Logged in");}
+        else {
+          this.navigateToHome();
+          alert("Logged in");
+        }
       });
-      setTimeout(()=>{
+      setTimeout(() => {
         this.loading = false;
-      },1000);
-    }else {
+      }, 1000);
+    } else {
       alert("Enter valid details")
     }
   }

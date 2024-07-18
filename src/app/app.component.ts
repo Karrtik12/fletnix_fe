@@ -1,31 +1,50 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthService } from './Services/auth.service';
 import { NgIf } from '@angular/common';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, MatToolbarModule, NgIf, MatIconModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
   title = 'FletNix';
   authService = inject(AuthService);
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem("loggedInUserEmail") !== undefined || localStorage.getItem("loggedInUserEmail") !== null || localStorage.getItem("loggedInUserEmail") !== '') 
-      {this.authService.loggedInUser.email = localStorage.getItem("loggedInUserEmail")!;}
-    if(localStorage.getItem("loggedInUserAge") !== undefined || localStorage.getItem("loggedInUserEmail") !== null || localStorage.getItem("loggedInUserEmail") !== '0') 
-      {this.authService.loggedInUser.age = parseInt(localStorage.getItem("loggedInUserAge")!);}
-    localStorage.setItem("loggedInUserEmail", this.authService.loggedInUser.email);
-    localStorage.setItem("loggedInUserAge", this.authService.loggedInUser.age.toString());
-    if(this.authService.loggedInUser.email === ''){
+    if (
+      localStorage.getItem('loggedInUserEmail') !== undefined &&
+      localStorage.getItem('loggedInUserEmail') !== null &&
+      localStorage.getItem('loggedInUserEmail') !== ''
+    ) {
+      this.authService.loggedInUser.email =
+        localStorage.getItem('loggedInUserEmail')!;
+    }
+    if (
+      localStorage.getItem('loggedInUserAge') !== undefined &&
+      localStorage.getItem('loggedInUserEmail') !== null &&
+      localStorage.getItem('loggedInUserEmail') !== '0'
+    ) {
+      this.authService.loggedInUser.age = parseInt(
+        localStorage.getItem('loggedInUserAge')!
+      );
+    }
+    localStorage.setItem(
+      'loggedInUserEmail',
+      this.authService.loggedInUser.email
+    );
+    localStorage.setItem(
+      'loggedInUserAge',
+      this.authService.loggedInUser.age.toString()
+    );
+    if (this.authService.loggedInUser.email === '') {
       this.navigateToLogin();
     }
   }
@@ -37,12 +56,22 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  logout(){
-    this.authService.loggedInUser = {email:'', age:0, message:'Logged out successfully'};
-    localStorage.setItem("loggedInUserEmail", this.authService.loggedInUser.email);
-    localStorage.setItem("loggedInUserAge", this.authService.loggedInUser.age.toString());
+  logout() {
+    this.authService.loggedInUser = {
+      email: '',
+      age: 0,
+      message: 'Logged out successfully',
+    };
+    localStorage.setItem(
+      'loggedInUserEmail',
+      this.authService.loggedInUser.email
+    );
+    localStorage.setItem(
+      'loggedInUserAge',
+      this.authService.loggedInUser.age.toString()
+    );
     this.navigateToLogin();
-    alert(this.authService.loggedInUser.message)
+    alert(this.authService.loggedInUser.message);
   }
 
   onSearch(event: KeyboardEvent): void {
@@ -51,7 +80,7 @@ export class AppComponent implements OnInit {
       const query = inputElement.value.trim();
       if (query) {
         this.router.navigate(['/search'], { queryParams: { q: query } });
-        inputElement.value = "";
+        inputElement.value = '';
       }
     }
   }
