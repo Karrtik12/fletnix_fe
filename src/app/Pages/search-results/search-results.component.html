@@ -1,6 +1,4 @@
-<div *ngIf="loading" class="loading-container">
-  <div class="loading-bar"></div>
-</div>
+<app-loading-bar *ngIf="loading" />
 <div *ngIf="!loading">
   <div class="container">
     <app-title-card

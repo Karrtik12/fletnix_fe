@@ -1,0 +1,45 @@
+<div class="register-container">
+  <div class="register-box">
+    <h2>Register</h2>
+    <form (ngSubmit)="tryRegistering()" *ngIf="!loading">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="registrationDetails.email"
+          name="email"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input
+          type="number"
+          id="age"
+          [(ngModel)]="registrationDetails.age"
+          name="age"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="registrationDetails.password"
+          name="password"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    <div *ngIf="loading" class="loading-spinner"></div>
+    <div>
+      <p>
+        Already registered?
+        <span class="login-link" (click)="navigateToLogin()">Login here</span>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,4 @@
-<div *ngIf="loading" class="loading-container">
-  <div class="loading-bar"></div>
-</div>
+<app-loading-bar *ngIf="loading" />
 <div *ngIf="!loading && title">
   <h1 *ngIf="title.title">{{ title!.title }}</h1>
   <p *ngIf="title.type"><strong>Type:</strong> {{ title.type }}</p>

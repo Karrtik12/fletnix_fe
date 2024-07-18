@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav *ngIf="authService.loggedInUser.email !== ''" class="navbar">
   <div class="navbar-left">
     <span (click)="navigateToHome()" class="navbar-brand">FletNix</span>
   </div>
@@ -10,7 +10,9 @@
       (keyup)="onSearch($event)"
     />
   </div>
-  <div class="navbar-center"></div>
+  <div class="navbar-right">
+    <span (click)="logout()" class="navbar-logout">Logout</span>
+  </div>
 </nav>
 <div class="page">
   <router-outlet></router-outlet>

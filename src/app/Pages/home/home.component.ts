@@ -5,11 +5,13 @@ import { TitlesService } from '../../Services/titles.service';
 import { TitleDetailModel, TitleListModel } from '../../Models/title';
 import { TitleCardComponent } from '../../Elements/title-card/title-card.component';
 import { QueryModel } from '../../Models/query';
+import { LoadingBarComponent } from '../../Elements/loading-bar/loading-bar.component';
+import { AuthService } from '../../Services/auth.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgIf, NgFor, TitleCardComponent, FormsModule ],
+  imports: [NgIf, NgFor, TitleCardComponent, FormsModule, LoadingBarComponent ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -17,8 +19,7 @@ export class HomeComponent implements OnInit{
   titleList: TitleDetailModel[]= [];
   currentType = "All";
   query:QueryModel={
-    page: undefined,
-    age: undefined,
+    page: 1,
     type: ""
   };
   totalPages: number = 0;
@@ -52,7 +53,7 @@ export class HomeComponent implements OnInit{
       this.currentPage = res.page;
     });
     setTimeout(()=>{
-      this.loading= false;},2000);
+      this.loading= false;},1000);
   }
   
   truncate(text: string, limit: number): string {
