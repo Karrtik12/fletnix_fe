@@ -23,22 +23,25 @@
 }
 
 .navbar-logout {
-  margin: 0 100px;
+  font-size: 14px;
+  color: white;
+  transition: font-size 0.2s;
+}
+
+.navbar-greet {
+  display: flex;
+  flex-direction: row;
   font-size: 14px;
   color: white;
   transition: font-size 0.2s;
 }
 
 .navbar-right {
+  margin-right: 80px;
   display: flex;
+  flex-direction: column;
   align-items: end;
   justify-content: end;
-}
-
-.navbar-right {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .navbar-logout:hover {
@@ -52,7 +55,7 @@
 }
 
 .search-bar {
-  width: 100%;
+  width: 80%;
   max-width: 400px;
   padding: 8px;
   border: none;
@@ -67,7 +70,7 @@
   overflow-y: auto;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .navbar {
     flex-direction: column;
     padding: 10px;
@@ -78,6 +81,10 @@
   .navbar-right {
     width: 100%;
     text-align: start;
+  }
+
+  .navbar-right {
+    margin-top: 10px;
   }
 
   .search-bar {

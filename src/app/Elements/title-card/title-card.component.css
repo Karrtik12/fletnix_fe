@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: start;
   height: 300px;
+  width: 250px;
   box-sizing: border-box;
   color: #fff;
   transition: transform 0.2s, box-shadow 0.2s;

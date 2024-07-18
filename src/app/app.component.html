@@ -11,6 +11,7 @@
     />
   </div>
   <div class="navbar-right">
+    <span class="navbar-greet">Hi {{ authService.loggedInUser.email }}</span>
     <span (click)="logout()" class="navbar-logout">Logout</span>
   </div>
 </nav>

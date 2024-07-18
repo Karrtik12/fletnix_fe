@@ -46,3 +46,9 @@
   margin-left: 10px;
   padding: 5px;
 }
+
+@media (max-width: 900px) {
+  .filter {
+    margin: 30px 0 30px 0;
+  }
+}
