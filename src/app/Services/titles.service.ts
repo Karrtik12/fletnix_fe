@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
 })
 export class TitlesService {
 
-  baseUrl: string = 'http://127.0.0.1:5000/api/titles';
+  baseUrl: string = `https://fletnix-be.onrender.com/api/titles`;
   authService = inject(AuthService);
 
   constructor(private http: HttpClient) { }

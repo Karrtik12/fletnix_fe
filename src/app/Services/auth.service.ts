@@ -11,7 +11,7 @@ export class AuthService {
     email: '', age: 0, message: ''
   }
 
-  baseUrl: string = 'http://127.0.0.1:5000/api/auth';
+  baseUrl: string = `https://fletnix-be.onrender.com/api/auth`;
 
   constructor(private http: HttpClient) { 
   }
