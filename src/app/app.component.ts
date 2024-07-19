@@ -22,6 +22,8 @@ export class AppComponent implements OnInit {
     if (
       localStorage.getItem('loggedInUserEmail') !== undefined &&
       localStorage.getItem('loggedInUserEmail') !== null &&
+      localStorage.getItem('loggedInUserEmail') !== 'undefined' &&
+      localStorage.getItem('loggedInUserEmail') !== 'null' &&
       localStorage.getItem('loggedInUserEmail') !== ''
     ) {
       this.authService.loggedInUser.email =
@@ -29,8 +31,10 @@ export class AppComponent implements OnInit {
     }
     if (
       localStorage.getItem('loggedInUserAge') !== undefined &&
-      localStorage.getItem('loggedInUserEmail') !== null &&
-      localStorage.getItem('loggedInUserEmail') !== '0'
+      localStorage.getItem('loggedInUserAge') !== null &&
+      localStorage.getItem('loggedInUserAge') !== 'undefined' &&
+      localStorage.getItem('loggedInUserAge') !== 'null' &&
+      localStorage.getItem('loggedInUserAge') !== '0'
     ) {
       this.authService.loggedInUser.age = parseInt(
         localStorage.getItem('loggedInUserAge')!
@@ -44,7 +48,7 @@ export class AppComponent implements OnInit {
       'loggedInUserAge',
       this.authService.loggedInUser.age.toString()
     );
-    if (this.authService.loggedInUser.email === '') {
+    if (this.authService.loggedInUser.email === '' || this.authService.loggedInUser.email === undefined || this.authService.loggedInUser.email === null || this.authService.loggedInUser.email === 'undefined' || this.authService.loggedInUser.email === 'null' || this.authService.loggedInUser.age === 0 || this.authService.loggedInUser.age === undefined || this.authService.loggedInUser.age === null) {
       this.navigateToLogin();
     }
   }
