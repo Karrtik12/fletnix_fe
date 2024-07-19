@@ -6,4 +6,5 @@ export interface QueryModel {
 export interface SearchQueryModel {
     q: string;
     type: string;
+    page: number;
 }

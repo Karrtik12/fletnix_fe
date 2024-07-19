@@ -25,6 +25,9 @@ export class TitlesService {
     if (param.type !== undefined) {
       queryParams = queryParams.set("type", param.type.toString());
     }
+    if (param.page !== undefined) {
+      queryParams = queryParams.set("page", param.page.toString());
+    }
     queryParams = queryParams.set("age", this.authService.loggedInUser.age.toString());
     return this.http.get<TitleListModel>(`${this.baseUrl}/search`, { params: queryParams })
   }
