@@ -65,7 +65,7 @@ export class RegisterComponent {
     );
     setTimeout(() => {
       this.loading = false;
-    }, 1000);
+    }, 2000);
 
   }
 }

@@ -48,7 +48,7 @@ export class LoginComponent {
       });
       setTimeout(() => {
         this.loading = false;
-      }, 1000);
+      }, 2000);
     } else {
       alert("Enter valid details")
     }
