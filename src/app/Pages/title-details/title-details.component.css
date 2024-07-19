@@ -3,7 +3,19 @@
 }
 
 .details {
-  margin-top: 100px;
+  margin: 80px 20px 40px 20px;
+}
+
+@media (min-width: 400px) and (max-width: 900px) {
+  .details {
+    margin: 40px 20px 40px 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .details {
+    margin: 0 20px 20px 20px;
+  }
 }
 
 .tags {
@@ -18,7 +30,9 @@
 
 .tag-div {
   display: flex;
-  margin-top: 15px;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 25px;
 }
 
 h1 {
