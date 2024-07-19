@@ -1,28 +1,22 @@
-<div class="card-wrapper">
-  <div
-    class="card"
-    (click)="navigateToDetail()"
-    (mouseover)="hover = true"
-    (mouseleave)="hover = false"
-  >
-    <!-- <p class="tags" >{{ title.listed_in }}</p> -->
-    <h2 *ngIf="title.title">{{ title.title }}</h2>
-    <!-- <p *ngIf="title.director">Director: {{ truncate(title.director, 20) }}</p>
-    <p *ngIf="title.cast">Cast: {{ truncate(title.cast, 25) }}</p> -->
-    <!-- <p *ngIf="title.release_year">Release Year: {{ title.release_year }}</p> -->
-    <p *ngIf="title.description" class="description">
-      {{ truncate(title.description, 120) }}
+<div
+  class="card"
+  (click)="navigateToDetail()"
+  (mouseover)="hover = true"
+  (mouseleave)="hover = false"
+>
+  <h2 *ngIf="title.title">{{ title.title }}</h2>
+  <p *ngIf="title.description" class="description">
+    {{ truncate(title.description, 120) }}
+  </p>
+  <p *ngIf="title.duration">
+    {{ convertToHoursOrSeason(title.duration) }}
+  </p>
+  <div class="tag-div" *ngIf="title.type && hover">
+    <p class="tags">{{ title.type }}</p>
+  </div>
+  <div class="tag-div" *ngIf="title.listed_in && hover">
+    <p class="tags" *ngFor="let item of title.listed_in.split(', ')">
+      {{ item }}
     </p>
-    <p *ngIf="title.duration">
-      {{ convertToHoursOrSeason(title.duration) }}
-    </p>
-    <div class="tag-div" *ngIf="title.type && hover">
-      <p class="tags">{{ title.type }}</p>
-    </div>
-    <div class="tag-div" *ngIf="title.listed_in && hover">
-      <p class="tags" *ngFor="let item of title.listed_in.split(', ')">
-        {{ item }}
-      </p>
-    </div>
   </div>
 </div>
