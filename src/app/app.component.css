@@ -21,10 +21,12 @@
 }
 
 .navbar-center {
-  flex: 3;
+  flex: 2;
+  align-items: center;
+  justify-content: center;
 }
 
-.navbar-brand {
+.navbar-left {
   padding-left: 20px;
   font-size: 36px;
   font-weight: bold;
@@ -34,12 +36,13 @@
 .navbar-logout {
   font-size: 14px;
   color: white;
-  transition: font-size 0.2s;
+  transition: font-size 0.3s;
 }
 
 .navbar-greet {
   display: flex;
   flex-direction: row;
+  text-align: right;
   font-size: 14px;
   color: white;
 }
@@ -64,12 +67,13 @@
 }
 
 .search-bar {
-  width: 90%;
+  width: 100%;
   padding: 12px;
   border: none;
   border-radius: 20px;
   background-color: #fff;
   color: #000;
+  font-size: 16px;
 }
 
 .search-bar:focus {
@@ -78,7 +82,7 @@
 }
 
 .page {
-  padding: 30px;
+  padding: 90px 10px 30px 10px;
   background-image: linear-gradient(
     to right,
     rgb(0, 0, 0),
@@ -88,20 +92,57 @@
   overflow-y: auto;
 }
 
+@media (min-width: 400px) and (max-width: 900px) {
+  .navbar-right {
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    margin: 20px 0 0 0;
+  }
+
+  .page {
+    padding: 150px 10px 30px 10px;
+  }
+  /* .navbar-right {
+  } */
+}
+
+@media (max-width: 400px) {
+  .navbar-left {
+    order: 1;
+    width: 100%;
+  }
+  .navbar-right {
+    order: 2;
+    width: 95%;
+  }
+  .navbar-center {
+    order: 3;
+  }
+  .page {
+    padding: 200px 10px 30px 10px;
+  }
+}
+
 @media (max-width: 900px) {
   .navbar {
     flex-direction: column;
+    align-items: start;
   }
 
-  .navbar-left,
-  .navbar-center,
-  .navbar-right {
+  .navbar-center {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-bar {
+    width: 80%;
+  }
+
+  .navbar-left {
     width: 100%;
     text-align: start;
-  }
-
-  .navbar-right {
-    margin: 20px 20px 0 0;
   }
 
   .search-bar {
@@ -109,7 +150,6 @@
   }
 
   .page {
-    padding: 150px 20px;
     background-image: linear-gradient(
       to right,
       rgb(0, 0, 0),
