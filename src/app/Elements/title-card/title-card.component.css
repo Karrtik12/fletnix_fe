@@ -9,7 +9,7 @@
   height: 250px;
   box-sizing: border-box;
   color: #fff;
-  transition: transform 0.1s, box-shadow 0.1s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card h2 {
@@ -47,7 +47,7 @@
     rgb(27, 0, 74),
     rgb(100, 0, 13)
   );
-  transform: scale(1.2);
+  transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
