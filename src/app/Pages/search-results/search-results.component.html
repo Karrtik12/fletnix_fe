@@ -21,6 +21,43 @@
         [title]="title"
       ></app-title-card>
     </div>
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button
+        [disabled]="currentPage === 1"
+        (click)="goToPage(currentPage - 1)"
+      >
+        <
+      </button>
+      <button [disabled]="currentPage === 1" (click)="goToPage(1)">1</button>
+      <span *ngIf="currentPage - 1 > 2">...</span>
+      <div class="middle-buttons" *ngFor="let page of pages">
+        <button
+          *ngIf="
+            page === currentPage - 1 ||
+            page === currentPage ||
+            page === currentPage + 1
+          "
+          [disabled]="currentPage === page"
+          (click)="goToPage(page)"
+        >
+          {{ page }}
+        </button>
+      </div>
+      <span *ngIf="totalPages - currentPage > 2">...</span>
+      <button
+        *ngIf="totalPages > 1"
+        [disabled]="currentPage === totalPages"
+        (click)="goToPage(totalPages)"
+      >
+        {{ totalPages }}
+      </button>
+      <button
+        [disabled]="currentPage === totalPages"
+        (click)="goToPage(currentPage + 1)"
+      >
+        >
+      </button>
+    </div>
   </div>
   <h1 class="no-result-message" *ngIf="titleList.length === 0">
     We didn't find any matches for "{{ searchQuery.q }}".

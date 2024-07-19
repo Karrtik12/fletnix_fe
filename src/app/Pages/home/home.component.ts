@@ -7,6 +7,8 @@ import { TitleCardComponent } from '../../Elements/title-card/title-card.compone
 import { QueryModel } from '../../Models/query';
 import { LoadingBarComponent } from '../../Elements/loading-bar/loading-bar.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { AuthService } from '../../Services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +20,7 @@ import { MatRadioModule } from '@angular/material/radio';
 export class HomeComponent implements OnInit {
   titleList: TitleDetailModel[] = [];
   currentType = "All";
+  authService = inject(AuthService)
   query: QueryModel = {
     page: 1,
     type: ""
@@ -26,9 +29,44 @@ export class HomeComponent implements OnInit {
   currentPage: number = 0;
   titleService = inject(TitlesService);
   loading: boolean = false;
+  pages: number[] = [];
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    if (
+      localStorage.getItem('loggedInUserEmail') !== undefined &&
+      localStorage.getItem('loggedInUserEmail') !== null &&
+      localStorage.getItem('loggedInUserEmail') !== ''
+    ) {
+      this.authService.loggedInUser.email =
+        localStorage.getItem('loggedInUserEmail')!;
+    }
+    if (
+      localStorage.getItem('loggedInUserAge') !== undefined &&
+      localStorage.getItem('loggedInUserEmail') !== null &&
+      localStorage.getItem('loggedInUserEmail') !== '0'
+    ) {
+      this.authService.loggedInUser.age = parseInt(
+        localStorage.getItem('loggedInUserAge')!
+      );
+    }
+    localStorage.setItem(
+      'loggedInUserEmail',
+      this.authService.loggedInUser.email
+    );
+    localStorage.setItem(
+      'loggedInUserAge',
+      this.authService.loggedInUser.age.toString()
+    );
+    if (this.authService.loggedInUser.email === '') {
+      this.navigateToLogin();
+    }
     this.getTitles();
+  }
+
+  navigateToLogin(): void {
+    this.router.navigate(['/login']);
   }
 
   goToPage(page: number): void {
@@ -51,10 +89,12 @@ export class HomeComponent implements OnInit {
       this.titleList = res.titles;
       this.totalPages = res.totalPages;
       this.currentPage = res.page;
+      this.pages = [];
+      for (let i = 2; i <= this.totalPages - 1; i++) this.pages.push(i);
     });
     setTimeout(() => {
       this.loading = false;
-    }, 1000);
+    }, 2000);
   }
 
   truncate(text: string, limit: number): string {

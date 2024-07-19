@@ -22,27 +22,40 @@
       ></app-title-card>
     </div>
     <div class="pagination" *ngIf="totalPages > 1">
-      <button [disabled]="currentPage === 1" (click)="goToPage(1)">
-        First
-      </button>
       <button
         [disabled]="currentPage === 1"
         (click)="goToPage(currentPage - 1)"
       >
-        Previous
+        <
       </button>
-      <span class="page-number">Page {{ currentPage }} / {{ totalPages }}</span>
+      <button [disabled]="currentPage === 1" (click)="goToPage(1)">1</button>
+      <span *ngIf="currentPage - 1 > 2">...</span>
+      <div class="middle-buttons" *ngFor="let page of pages">
+        <button
+          *ngIf="
+            page === currentPage - 1 ||
+            page === currentPage ||
+            page === currentPage + 1
+          "
+          [disabled]="currentPage === page"
+          (click)="goToPage(page)"
+        >
+          {{ page }}
+        </button>
+      </div>
+      <span *ngIf="totalPages - currentPage > 2">...</span>
+      <button
+        *ngIf="totalPages > 1"
+        [disabled]="currentPage === totalPages"
+        (click)="goToPage(totalPages)"
+      >
+        {{ totalPages }}
+      </button>
       <button
         [disabled]="currentPage === totalPages"
         (click)="goToPage(currentPage + 1)"
       >
-        Next
-      </button>
-      <button
-        [disabled]="currentPage === totalPages"
-        (click)="goToPage(totalPages)"
-      >
-        Last
+        >
       </button>
     </div>
   </div>
