@@ -12,5 +12,3 @@ To run this application in your local machine, follow these steps:
 ### Note:
 
 - Your local machine should have Node.js and npm installed
-
--testtt
